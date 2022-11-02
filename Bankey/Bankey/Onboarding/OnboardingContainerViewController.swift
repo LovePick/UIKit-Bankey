@@ -140,13 +140,13 @@ extension OnboardingContainerViewController {
         
         if(currentIndex == 0){
             previousButton.isHidden = true
-            nextButton.isHidden = false
+            nextButton.setTitle("Next", for: [])
         }else if(currentIndex >= pages.count - 1) {
             previousButton.isHidden = false
-            nextButton.isHidden = true
+            nextButton.setTitle("Done", for: [])
         }else{
             previousButton.isHidden = false
-            nextButton.isHidden = false
+            nextButton.setTitle("Next", for: [])
         }
     }
     
@@ -269,13 +269,22 @@ extension OnboardingContainerViewController {
     @objc func nextTapped(_ sender: UIButton) {
         print("nextTapped")
         currentPageIndex += 1
-        goToNextPage()
-        updateButton(currentIndex: currentPageIndex)
+        if(currentPageIndex >= pages.count){
+            currentPageIndex = pages.count - 1
+            delegate?.didFinishOnboarding()
+        }else{
+            goToNextPage()
+            updateButton(currentIndex: currentPageIndex)
+        }
+        
     }
     
     @objc func previousTapped(_ sender: UIButton) {
         print("previousTapped")
         currentPageIndex -= 1
+        if(currentPageIndex < 0){
+            currentPageIndex = 0
+        }
         goToPreviousPage()
         updateButton(currentIndex: currentPageIndex)
         
