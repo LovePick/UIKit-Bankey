@@ -7,8 +7,16 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+protocol LogoutDelegate: AnyObject {
+    func didLogout()
+}
 
+protocol LoginViewControllerDelegate: AnyObject {
+    func didLogin()
+}
+
+class LoginViewController: UIViewController {
+    
     
     // MARK: - VIEW
     let titleLabel = UILabel()
@@ -23,20 +31,24 @@ class LoginViewController: UIViewController {
     var userName: String? {
         return loginView.usernameTextField.text
     }
+    
     var password: String? {
         return loginView.passwordTextField.text
     }
     
+    weak var delegate: LoginViewControllerDelegate?
     
     // MARK: - DID LOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         style()
         layout()
-        
     }
-
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        signInButton.configuration?.showsActivityIndicator = false
+    }
     
 }
 
@@ -49,14 +61,14 @@ extension LoginViewController {
         titleLabel.font = UIFont.systemFont(ofSize: 32, weight: .bold)
         titleLabel.textAlignment = .center
         titleLabel.text = "Bankey"
-
+        
         subTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         subTitleLabel.textColor = .darkGray
         subTitleLabel.font = UIFont.systemFont(ofSize: 20)
         subTitleLabel.textAlignment = .center
         subTitleLabel.numberOfLines = 2
         subTitleLabel.text = "Your premium source for all things banking!"
-
+        
         loginView.translatesAutoresizingMaskIntoConstraints = false
         
         signInButton.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +82,10 @@ extension LoginViewController {
         errorMessageLabel.textColor = .systemRed
         errorMessageLabel.numberOfLines = 0
         errorMessageLabel.isHidden = true
-
+        
+        loginView.usernameTextField.text = "Kevin"
+        loginView.passwordTextField.text = "1234"
+        
     }
     
     private func layout() {
@@ -143,6 +158,7 @@ extension LoginViewController {
         
         if userName == "Kevin" && password == "1234" {
             signInButton.configuration?.showsActivityIndicator = true
+            delegate?.didLogin()
         } else {
             configureView(withMessage: "Incorrect username / password")
         }
