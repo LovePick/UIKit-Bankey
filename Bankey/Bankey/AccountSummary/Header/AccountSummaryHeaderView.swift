@@ -11,6 +11,9 @@ import UIKit
 class AccountSummaryHeaderView: UIView {
     
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var labelDate: UILabel!
+    
+    let shakeyBellView = ShakeyBellView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,5 +40,21 @@ class AccountSummaryHeaderView: UIView {
         contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        labelDate.text = dateFormatter.string(from: Date())
+        
+        setupShakeyBell()
+    }
+    
+    private func setupShakeyBell() {
+        shakeyBellView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(shakeyBellView)
+        
+        NSLayoutConstraint.activate([
+            shakeyBellView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            shakeyBellView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 }
