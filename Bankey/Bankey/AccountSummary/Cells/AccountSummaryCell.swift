@@ -8,7 +8,25 @@
 import Foundation
 import UIKit
 
+
 class AccountSummaryCell: UITableViewCell {
+    
+    enum AccountType: String {
+        case Banking
+        case CreditCard
+        case Investment
+    }
+    
+    // MARK: - MODEL
+    struct ViewModel {
+        let accountType: AccountType
+        let accountName: String
+//        let balance: Decimal
+        
+        //        var balanceAsAttributedString: NSAttributedString {
+        //            return CurrencyFormatter().makeAttributedCurrency(balance)
+        //        }
+    }
     
     // MARK: - VIEW
     let typeLabel = UILabel()
@@ -24,7 +42,7 @@ class AccountSummaryCell: UITableViewCell {
     // MARK: - PROPERTY
     static let reuseID = "AccountSummaryCell"
     static let rowHeight: CGFloat = 112
-    
+    let viewModel: ViewModel? = nil
     
     // MARK: - INIT
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -143,5 +161,27 @@ extension AccountSummaryCell {
         rootString.append(centString)
         
         return rootString
+    }
+}
+
+// MARK: - CONFIGURE
+extension AccountSummaryCell {
+    func configure(with vm: ViewModel) {
+        
+        typeLabel.text = vm.accountType.rawValue
+        nameLabel.text = vm.accountName
+        
+        
+        switch vm.accountType {
+        case .Banking:
+            underlineView.backgroundColor = appColor
+            balanceLabel.text = "Current balance"
+        case .CreditCard:
+            underlineView.backgroundColor = .systemOrange
+            balanceLabel.text = "Current balance"
+        case .Investment:
+            underlineView.backgroundColor = .systemPurple
+            balanceLabel.text = "Value"
+        }
     }
 }
