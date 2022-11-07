@@ -34,6 +34,8 @@
 		C19A8ED92910F58A00FD3290 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A8ED82910F58A00FD3290 /* LoginViewController.swift */; };
 		C19A8EDE2910F58C00FD3290 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C19A8EDD2910F58C00FD3290 /* Assets.xcassets */; };
 		C19A8EE12910F58C00FD3290 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C19A8EDF2910F58C00FD3290 /* LaunchScreen.storyboard */; };
+		C19C66AC2918A4A600906DA7 /* ProfileManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C66AB2918A4A600906DA7 /* ProfileManageable.swift */; };
+		C19C66AE2918AB4100906DA7 /* AccountSummaryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19C66AD2918AB4100906DA7 /* AccountSummaryViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		C19A8EDD2910F58C00FD3290 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C19A8EE02910F58C00FD3290 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C19A8EE22910F58C00FD3290 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C19C66AB2918A4A600906DA7 /* ProfileManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManageable.swift; sourceTree = "<group>"; };
+		C19C66AD2918AB4100906DA7 /* AccountSummaryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 			children = (
 				C11F639F2916B3A1007AAE28 /* ProfileTests.swift */,
 				C11F63A12916B4BC007AAE28 /* AccountTests.swift */,
+				C19C66AD2918AB4100906DA7 /* AccountSummaryViewControllerTests.swift */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 				C11F63992916A73D007AAE28 /* AccountSummaryViewController+Networking.swift */,
 				C190E3072913993F008F97ED /* Header */,
 				C190E3082913995E008F97ED /* Cells */,
+				C19C66AA2918A3A300906DA7 /* Networking */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -235,6 +241,14 @@
 				C15C21CE2910F858000BC7D7 /* Files */,
 			);
 			path = Bankey;
+			sourceTree = "<group>";
+		};
+		C19C66AA2918A3A300906DA7 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C19C66AB2918A4A600906DA7 /* ProfileManageable.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +356,7 @@
 				C17AE49C2914D64700D7E49D /* CurrencyFormatterTests.swift in Sources */,
 				C11F63A22916B4BC007AAE28 /* AccountTests.swift in Sources */,
 				C11F63A02916B3A1007AAE28 /* ProfileTests.swift in Sources */,
+				C19C66AE2918AB4100906DA7 /* AccountSummaryViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +374,7 @@
 				C19A8ED92910F58A00FD3290 /* LoginViewController.swift in Sources */,
 				C17AE48D2914BF2F00D7E49D /* CurrencyFormatter.swift in Sources */,
 				C17AE48B2914BEE600D7E49D /* DecimalUtils.swift in Sources */,
+				C19C66AC2918A4A600906DA7 /* ProfileManageable.swift in Sources */,
 				C17AE49E2914E6EE00D7E49D /* NSNotificationName.swift in Sources */,
 				C190E2FE291381DD008F97ED /* UIViewController+Utils.swift in Sources */,
 				C17AE4A3291502BA00D7E49D /* ShakeyBellView.swift in Sources */,

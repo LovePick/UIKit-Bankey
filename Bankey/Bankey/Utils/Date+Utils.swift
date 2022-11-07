@@ -16,7 +16,9 @@ extension Date {
     
     var monthDayYearString: String {
         let dateFormatter = Date.bankeyDateFormatter
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
         dateFormatter.dateFormat = "MMM d, yyyy"
+        dateFormatter.locale = Locale(identifier: "MDT")
         return dateFormatter.string(from: self)
     }
 }
